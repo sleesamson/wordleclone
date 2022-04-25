@@ -208,6 +208,7 @@ class Game extends React.Component {
         })
         return;
       case 'backspace':
+      case 'delete':
         this.wordState.pop();
         pos = this.wordState.length;
         letter = ''
