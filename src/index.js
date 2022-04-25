@@ -192,11 +192,11 @@ class Game extends React.Component {
             let [row, sq] = this.getRefs(0);
             var won = row.parseGuess(guess);
             if (won) {
-              this.popGameOverModal('YOU WON', target);
+              this.popGameOverModal('FANTASTIC JOB! YOU DID IT!', target);
               target.gameOver();
             }
             if (!won && this.rowPos === 5) {
-              this.popGameOverModal('YOU LOSE', target);
+              this.popGameOverModal('BETTER LUCK NEXT TIME', target);
             }
             this.rowPos++;
             this.wordState = [];
