@@ -70,10 +70,21 @@ body {
 }
 
 .keyboard {
-  text-align: center;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
 }
-
+@media only screen and (max-device-width: 480px) {
+  .keyboard {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: unset;
+  }
+}
 .keyboard button {
   width: 40px;
   height: 56px;
