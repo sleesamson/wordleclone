@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Popup, GameOverModal} from './Modals';
 import Keyboard from './Keyboard';
-import {generateWord, isAlpha, isValidWord} from './utils';
+import {generateWord, isValidWord} from './utils';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 
@@ -63,7 +63,6 @@ class Row extends React.Component {
       let stateUpdate = {};
       let sq = this.sqMapping.get(i).current;
       const g = guess[i];
-      const a = answer[i];
       var io = answer.indexOf(g);
 
       if (io === i) {
@@ -209,7 +208,6 @@ class Game extends React.Component {
           }
         })
         return;
-        break;
       case 'backspace':
         this.wordState.pop();
         pos = this.wordState.length;

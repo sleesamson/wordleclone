@@ -10,8 +10,6 @@ const generateWord = (wordLength) => {
     length = word.length;
     answer = word;
   }
-  answer = 'added';
-  
   return answer;
 }
 

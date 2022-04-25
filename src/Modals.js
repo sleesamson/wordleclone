@@ -1,31 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-
-
-
-//const GameOverModal = React.forwardRef((props, ref) => {
-//  console.log(ref);
-//  return (
-//    <button className="FancyButton">
-//    ss
-//    </button>
-//  );
-//});
-
-//function GameOverModal(props) {
-//  const inputEl = useRef(null);
-//  
-//  return (
-//    <button
-//      className="FancyButton"
-//      ref={inputEl}
-//    >
-//    BUTTOn
-//    </button>
-//  );
-//}
-
-
-
+import React from 'react';
 
 // Credit to: https://www.cluemediator.com/create-simple-popup-in-reactjs#cpc
 class Popup extends React.Component {

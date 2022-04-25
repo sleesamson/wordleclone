@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 class Key extends React.Component {
   initialState =  {
@@ -34,14 +34,14 @@ class Key extends React.Component {
     const elsewhere = !match && this.state.elsewhere ? 'elsewhere': '';
     const nowhere = !match && !elsewhere && this.state.nowhere ? 'nowhere': '';
     const classes = `${match} ${elsewhere} ${nowhere}`;
-
+    var k = this.props.value === 'Backspace' ? 'Delete': this.props.value;
     return (
       <button
         onClick={this.handleClick}
         id={this.props.value.toLowerCase()}
         className={classes}
       >
-        {this.props.value}
+        {k}
       </button>
     );
   }
@@ -95,30 +95,9 @@ class Keyboard extends React.Component {
     return (
       <div className="keyboard">
         {keyboardKeys.map((keyboardRow, rowIndex) => (
-          <div key={rowIndex} className="mb-2 flex justify-center space-x-1">
+          <div key={rowIndex} className="mb-2 keyboard-row">
             {keyboardRow.map((keyp, index) => {
               return this.renderKey(keyp)
-            })}
-          </div>
-        ))}
-      </div>
-    );
-
-    return (
-      <div className="keyboard">
-        {keyboardKeys.map((keyboardRow, rowIndex) => (
-          <div key={rowIndex} className="mb-2 flex justify-center space-x-1">
-            {keyboardRow.map((keyp, index) => {
-              return (
-                <button
-                  key={keyp + index}
-                  onClick={this.keyClicked}
-                  id={keyp.toLowerCase()}
-                  className="keyPiece"
-                >
-                  {keyp}
-                </button>
-              );
             })}
           </div>
         ))}
