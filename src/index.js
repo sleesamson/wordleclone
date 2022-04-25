@@ -129,7 +129,6 @@ class Game extends React.Component {
     this.won = false;
     this.answer = generateWord(this.wordLength);
     this.wordState = [];
-    console.log(this.answer);
   }
 
   newGame = () => {
