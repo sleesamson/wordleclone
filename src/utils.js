@@ -24,6 +24,6 @@ const exceptions = ['every', 'boney', 'congo', 'raker', 'cider', 'sifts', 'tight
 const isValidWord = (guess) => {
   return fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + guess)
     .then((res) => res.json())
-    .then((result) => {exceptions.includes(guess) || Array.isArray(result)})
+    .then((result) => {return exceptions.includes(guess) || Array.isArray(result)})
 }
 export {generateWord, isAlpha, isValidWord}

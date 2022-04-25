@@ -78,27 +78,23 @@ body {
 }
 
 @media only screen and (max-device-width: 480px) {
-  .keyboard {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: unset;
-    padding: 0 15px 0px
-  }
   #enter, #backspace {
-    width: auto !important;
-    font-size: 0.6em;
+    width: 60px;
   }
 }
 
+.keyboard-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+}
 .keyboard button {
-  width: 50px;
+  width: 40px;
   height: 56px;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
   margin-left: 0.125rem;
   margin-right: 0.125rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240/var(--tw-bg-opacity));
   border: 0 solid #e5e7eb;
@@ -181,8 +177,4 @@ body {
   transition: .2s;
 }
 
-.keyboard-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-}
+
