@@ -58,36 +58,56 @@ class Row extends React.Component {
 
   parseGuess(guess) {
     var answer = this.props.game.answer.split("");
+    var guessArray = guess.split("");
 
-    for (let i=0; i < this.props.game.answer.length; i++) {
+    var elsewheres = [];
+
+    const getAllIndexes = (arr, val) => {
+      var indexes = [], i;
+      for(i = 0; i < arr.length; i++)
+          if (arr[i] === val)
+              indexes.push(i);
+      return indexes;
+
+    }
+
+    guessArray.forEach((g, i) => {
       let stateUpdate = {};
       let sq = this.sqMapping.get(i).current;
-      const g = guess[i];
-      var io = answer.indexOf(g);
+      let indexes = getAllIndexes(answer, g);
+      const matched = indexes.includes(i);
+      const nowhere = indexes.length === 0;
 
-      if (io === i) {
-        answer[io] = null;
+      if (matched) {
         stateUpdate['matched'] = true;
+        answer[i] = null;
       }
-      else if (io !== -1) {
-        answer[io] = null;
-        // letter could be a match later in the string
-        while (io !== -1) {
-          io = answer.indexOf(g, io+1);
-          if (io === i) {
-            answer[io] = null;
-            stateUpdate['matched'] = true;
-            break;
-          }
-        }
-        stateUpdate['elsewhere'] = true;
+      else if (nowhere) {
+        stateUpdate['nowhere'] = true;
+      }
+      else {
+        elsewheres.push(sq);
       }
 
-      stateUpdate['nowhere'] = !stateUpdate['elsewhere'] && !stateUpdate['matched'];
+      sq.setState(stateUpdate);
+      sq.button.setState(stateUpdate);
+    });
+
+
+    while(elsewheres.length) {
+      let sq = elsewheres.shift();
+      let stateUpdate = {};
+      let indexes = getAllIndexes(answer, sq.state.value);
+      if (indexes.length) {
+        stateUpdate['elsewhere'] = true;
+        answer[indexes[0]] = null;
+      }
+      else {
+        stateUpdate['nowhere'] = true;
+      }
       sq.setState(stateUpdate);
       sq.button.setState(stateUpdate);
     }
-
     return this.props.game.answer === guess;
   }
 

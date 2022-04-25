@@ -10,19 +10,20 @@ const generateWord = (wordLength) => {
     length = word.length;
     answer = word;
   }
+
   return answer;
 }
 
 
 const isAlpha = (keyCode) => /^[a-zA-Z]/.test(String.fromCharCode(keyCode));
 
-const exceptions = ['every'];
+const exceptions = ['every', 'boney', 'congo', 'raker', 'cider', 'sifts', 'tight'];
 
 // TODO: Use different API or make exception list
 // "every" is apparantly not a word according to this API
 const isValidWord = (guess) => {
   return fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + guess)
     .then((res) => res.json())
-    .then((result) => {return exceptions.includes(guess) || Array.isArray(result)})
+    .then((result) => {exceptions.includes(guess) || Array.isArray(result)})
 }
 export {generateWord, isAlpha, isValidWord}
